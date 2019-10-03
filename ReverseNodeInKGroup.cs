@@ -60,6 +60,9 @@ namespace leetCode
             int bufferCount = 0;
             while(actual != null || bufferCount == k)
             {
+                buffer[bufferCount] = actual;
+                actual = actual.next;
+                bufferCount++;
                 if (bufferCount == k)
                 {
                     if (buffer[0] == head) newHead = buffer[k - 1];
@@ -73,12 +76,7 @@ namespace leetCode
                     prev = buffer[0];
                     bufferCount = 0;
                     
-                } else
-                {
-                    buffer[bufferCount] = actual;
-                    actual = actual.next;
-                    bufferCount++;
-                }
+                } 
             }
             if (newHead == null) return head;
             return newHead;
